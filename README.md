@@ -64,7 +64,8 @@ This project is licensed under GPL v3.0 - see the LICENSE file for details
 ## 👤 Author
 **Khadija Saifeldin**
 - GitHub: [@khadija-saifeldin](https://github.com/khadija-saifeldin)
-- Dalia Alsunni
+**Dalia Alsunni**
+- GitHub: [@DALIA8hub](https://github.com/DALIA8hub)
 - Marwa Seleman
 
 ## 📧 Contact
