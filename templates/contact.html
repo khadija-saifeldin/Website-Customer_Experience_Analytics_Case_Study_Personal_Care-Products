@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: ltr;
+            margin: 0;
+            padding: 0;
+            background-color: #f7edcf;
+            /* Background color */
+            color: #2b3a55;
+            /* Text color */
+        }
+    
+        header {
+            background-color: #f7edcf;
+            /* Header background color */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f7edcf;
+        }
+    
+        header .left-buttons,
+        header .right-buttons {
+            display: flex;
+            align-items: center;
+        }
+    
+        header .left-buttons a,
+        header .right-buttons a {
+            margin: 0 10px;
+            padding: 10px;
+            text-decoration: none;
+            color: #2b3a55;
+            /* Button text color */
+            border: 1px solid #f7edcf;
+            /* Border color */
+            border-radius: 5px;
+            /* Border radius */
+            background-color: #f7edcf;
+            /* Button background color */
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            /* Button font size */
+        }
+    
+        header .left-buttons a:hover,
+        header .right-buttons a:hover {
+            background-color: #212121;
+            color: #a35c7a;
+        }
+    
+        .search-bar {
+            text-align: center;
+            margin: 3px 0;
+        }
+    
+        .search-bar input {
+            width: 80%;
+            padding: 1px;
+            font-size: 25px;
+            /* Search bar font size */
+            border: 1px solid #a35c7a;
+            /* Search bar border color */
+            border-radius: 100px;
+            background-color: #f7edcf;
+            /* Search bar background color */
+        }
+    
+        .search-bar button {
+            padding: 10px;
+            font-size: 20px;
+            /* Search button font size */
+            margin-right: 10px;
+            border: 1px solid #f7edcf;
+            border-radius: 50px;
+            background-color: #f7edcf;
+            /* Search button background color */
+            color: #212121;
+            /* Search button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .search-bar button:hover {
+            background-color: #a35c7a;
+            color: #f7edcf;
+        }
+    
+        .cardlist {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #f7edcf;
+            background-color: #f7edcf;
+            /* Card list background color */
+            border-radius: 20px;
+        }
+    
+        
+    
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .content h1 {
+            font-size: 36px;
+            color: #a35c7a;
+        }
+        .content p {
+            font-size: 18px;
+            color: #2b3a55;
+        }
+        .content a {
+            color: #a35c7a;
+            text-decoration: none;
+        }
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="left-buttons">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/all-products"><i class="fas fa-box-open"></i> Products</a>
+            <a href="/explor"><i class="fas fa-compass"></i> Explore</a>
+        </div>
+        <div class="right-buttons">
+            <form action="/search" method="get" class="search-bar">
+                <input type="text" name="product_name" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+    <div class="content">
+        <h1>Contact Us</h1>
+        <p>If you have any questions or need further information, please contact us at:</p>
+        <p>Email: <a href="khadiga******@gmail.com">khadiga******@gmail.com</a></p>
+        <p>Email: <a href="marwa******@gmail.com">marwa******@gmail.com</a></p>
+        <p>Email: <a href="daliaa******@gmail.com">daliaa******@gmail.com</a></p>
+    </div>
+</body>
+</html>

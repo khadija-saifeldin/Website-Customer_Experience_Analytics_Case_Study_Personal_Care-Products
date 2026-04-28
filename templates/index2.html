@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Care Products</title>
+    <!-- Include Font Awesome Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            /* Change text direction to right-to-left */
+            margin: 0;
+            padding: 0;
+            background-color: #f7edcf;
+            /* Background color */
+            color: #2b3a55;
+            /* Text color */
+        }
+    
+        header {
+            background-color: #f7edcf;
+            /* Header background color */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f7edcf;
+        }
+    
+        header .left-buttons,
+        header .right-buttons {
+            display: flex;
+            align-items: center;
+        }
+    
+        header .left-buttons a,
+        header .right-buttons a,
+        header .language-selector a {
+            margin: 0 10px;
+            padding: 10px;
+            text-decoration: none;
+            color: #2b3a55;
+            /* Button text color */
+            border: 1px solid #f7edcf;
+            /* Border color */
+            border-radius: 5px;
+            /* Border radius */
+            background-color: #f7edcf;
+            /* Button background color */
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            /* Button font size */
+        }
+    
+        header .left-buttons a:hover,
+        header .right-buttons a:hover,
+        header .language-selector a:hover {
+            background-color: #212121;
+            color: #a35c7a;
+        }
+    
+        header .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Space between links */
+        }
+    
+        .search-bar {
+            text-align: center;
+            margin: 30px 0;
+        }
+    
+        .search-bar input {
+            width: 50%;
+            padding: 10px;
+            font-size: 20px;
+            /* Search bar font size */
+            border: 1px solid #a35c7a;
+            /* Search bar border color */
+            border-radius: 100px;
+            background-color: #f7edcf;
+            /* Search bar background color */
+        }
+    
+        .search-bar button {
+            padding: 10px;
+            font-size: 20px;
+            /* Search button font size */
+            margin-right: 10px;
+            border: 1px solid #f7edcf;
+            border-radius: 50px;
+            background-color: #f7edcf;
+            /* Search button background color */
+            color: #212121;
+            /* Search button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .search-bar button:hover {
+            background-color: #a35c7a;
+            color: #f7edcf;
+        }
+    
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #f7edcf;
+            background-color: #f7edcf;
+            /* Product background color */
+            border-radius: 20px;
+        }
+    
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 23%;
+            /* Set a fixed width for each item */
+        }
+    
+        .main-info img {
+            width: 90%;
+            /* Reduce image width */
+            height: auto;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            /* Reduce space between image and paragraph */
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+    
+        .main-info p {
+            text-align: left;
+            /* Align text to the left */
+            direction: ltr;
+            /* Change text direction to left-to-right */
+            font-size: 18px;
+            color: #2b3a55;
+            margin-bottom: .30px;
+            text-justify: auto; 
+                /* Reduce space between paragraphs */
+        }
+    
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    
+        .welcome-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+    
+        .welcome-section h2 {
+            font-size: 50px;
+            color: #2b3a55;
+            direction: ltr;
+        }
+    
+        .main-img {
+            display: flex;
+            justify-content: space-between;
+            /* Ensure images are in the same row */
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="left-buttons">
+            {% if request.session.get('user') %}
+                <a href="#"><i class="fas fa-user"></i> {{ request.session.get('user') }}</a>
+                <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            {% else %}
+                <a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+            {% endif %}
+            <a href="/explor"><i class="fas fa-compass"></i> Explore</a> <!-- Add Explore button -->
+        </div>
+        <div class="right-buttons">
+            <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="/all-products"><i class="fas fa-box-open"></i> Products</a>
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+        </div>
+    </header>
+    <div class="search-bar">
+        <form action="/search" method="get">
+            <input type="text" name="product_name" placeholder="Search...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <div class="welcome-section">
+        <h2>Welcome to Taqyimat!</h2>
+    </div>
+    <div class="main">
+        <div class="main-img">
+            <div class="main-info">
+                <img src="images/WhatsApp Image 2025-01-10 at 14.55.48.jpeg" alt="Product Image" class="fade-in">
+            </div>
+            <div class="main-info">
+                <img src="images/333.jpg" alt="Product Image" class="transparent">
+                <p>We strive to be your trusted source when choosing personal care products. Our analyses are based on real data and precise reviews, making us the perfect partner in your search for what best suits your daily needs.</p>
+            </div>
+            <div class="main-info">
+                <img src="images/222.jpg" alt="Product Image" class="transparent">
+                <p>We don’t just display experiences, we analyze them in-depth using advanced tools to understand the
+                        diverse needs of
+                        users.</p>
+                <p>We pay attention to every detail to ensure a clear and comprehensive view of each product.</p>
+            </div>
+            <div class="main-info">
+                <img src="images/444.webp" alt="Product Image" class="transparent">
+                <p>We are here to help you make informed decisions about personal care products.</p>
+                <p>We collect and analyze user experience data to provide you with reliable and detailed reviews based on
+                    real experiences. </p>
+            </div>
+         </div>
+    </div>
+</body>
+</html>

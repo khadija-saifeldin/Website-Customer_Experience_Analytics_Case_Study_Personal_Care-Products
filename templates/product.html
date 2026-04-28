@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product_name }} Analysis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: ltr;
+            margin: 0;
+            padding: 0;
+            background-color: #f7edcf;
+            color: #2b3a55;
+        }
+        header {
+            background-color: #f7edcf;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f7edcf;
+        }
+        header .left-buttons, header .right-buttons {
+            display: flex;
+            align-items: center;
+        }
+        header .left-buttons a, header .right-buttons a {
+            margin: 0 10px;
+            padding: 10px;
+            text-decoration: none;
+            color: #2b3a55;
+            border: 1px solid #f7edcf;
+            border-radius: 5px;
+            background-color: #f7edcf;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+        }
+        header .left-buttons a:hover, header .right-buttons a:hover {
+            background-color: #212121;
+            color: #a35c7a;
+        }
+        .search-bar {
+            text-align: center;
+            margin: 3px 0;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 1px;
+            font-size: 25px;
+            border: 1px solid #a35c7a;
+            border-radius: 100px;
+            background-color: #f7edcf;
+        }
+        .search-bar button {
+            padding: 10px;
+            font-size: 20px;
+            margin-right: 10px;
+            border: 1px solid #f7edcf;
+            border-radius: 50px;
+            background-color: #f7edcf;
+            color: #212121;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #a35c7a;
+            color: #f7edcf;
+        }
+        .cardlist {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #f7edcf;
+            background-color: #f7edcf;
+            border-radius: 20px;
+        }
+        .card {
+            width: 30%;
+            margin-bottom: 20px;
+            border: 1px solid #f7edcf;
+            background-color: #f7edcf;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+         .card img {
+        width: 100%;
+        height: 100%; /* تحديد ارتفاع ثابت للصورة */
+        border-radius: 20px;
+        margin-bottom: 20px;
+        object-fit: cover; /* لضمان أن الصورة تغطي كامل المساحة المحددة */
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+    }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .card_title a {
+            font-size: 24px;
+            color: #a35c7a;
+            text-decoration: none;
+        }
+        .card_title p {
+            font-size: 18px;
+            color: #2b3a55;
+        }
+
+        .card.expanded {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        height: 100%;
+        z-index: 1000;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .card.expanded img {
+        width: 100%; /* تعديل العرض ليكون 100% */
+        height: 100%; /* تعديل الارتفاع ليكون تلقائي */
+    }
+    .card.expanded .card_title {
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="left-buttons">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/all-products"><i class="fas fa-box-open"></i> Products</a>
+            <a href="/explor"><i class="fas fa-compass"></i> Explore</a>
+            <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        <div class="right-buttons">
+            <form action="/search" method="get" class="search-bar">
+                <input type="text" name="product_name" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+    <div class="cardlist">
+        <div class="card">
+            <div class="card_image">
+                <img src="/images/{{ analysis_data['location'] }}" alt="{{ product_name }} Location Analysis">
+            </div>
+            <div class="card_title">
+                <a href="#">Location Analysis</a>
+                <p>Analysis of {{ product_name }} products based on location.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="/images/{{ analysis_data['gender_pie'] }}" alt="{{ product_name }} Gender Pie Chart">
+            </div>
+            <div class="card_title">
+                <a href="#">Gender Distribution</a>
+                <p>Gender distribution of {{ product_name }} products.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="/images/{{ analysis_data['type'] }}" alt="{{ product_name }} Product Type Analysis">
+            </div>
+            <div class="card_title">
+                <a href="#">Product Type Analysis</a>
+                <p>Analysis of {{ product_name }} products based on product type.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="/images/{{ analysis_data['gender'] }}" alt="{{ product_name }} Gender Analysis">
+            </div>
+            <div class="card_title">
+                <a href="#">Gender Analysis</a>
+                <p>Analysis of {{ product_name }} products based on gender.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="/images/{{ analysis_data['age'] }}" alt="{{ product_name }} Age Group Analysis">
+            </div>
+            <div class="card_title">
+                <a href="#">Age Group Analysis</a>
+                <p>Analysis of {{ product_name }} products based on age group.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                card.addEventListener('click', function () {
+                    if (card.classList.contains('expanded')) {
+                        card.classList.remove('expanded');
+                    } else {
+                        cards.forEach(c => c.classList.remove('expanded'));
+                        card.classList.add('expanded');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIVEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: ltr;
+            margin: 0;
+            padding: 0;
+            background-color: #f7edcf;
+            /* Background color */
+            color: #2b3a55;
+            /* Text color */
+        }
+
+        header {
+            background-color: #f7edcf;
+            /* Header background color */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f7edcf;
+        }
+
+        header .left-buttons,
+        header .right-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        header .left-buttons a,
+        header .right-buttons a {
+            margin: 0 10px;
+            padding: 10px;
+            text-decoration: none;
+            color: #2b3a55;
+            /* Button text color */
+            border: 1px solid #f7edcf;
+            /* Border color */
+            border-radius: 5px;
+            /* Border radius */
+            background-color: #f7edcf;
+            /* Button background color */
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            /* Button font size */
+        }
+
+        header .left-buttons a:hover,
+        header .right-buttons a:hover {
+            background-color: #212121;
+            color: #a35c7a;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin: 3px 0;
+        }
+
+        .search-bar input {
+            width: 80%;
+            padding: 1px;
+            font-size: 25px;
+            /* Search bar font size */
+            border: 1px solid #a35c7a;
+            /* Search bar border color */
+            border-radius: 100px;
+            background-color: #f7edcf;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            font-size: 20px;
+            /* Search button font size */
+            margin-right: 10px;
+            border: 1px solid #f7edcf;
+            border-radius: 50px;
+            background-color: #f7edcf;
+            /* Search button background color */
+            color: #212121;
+            /* Search button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #a35c7a;
+            color: #f7edcf;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #f7edcf;
+            background-color: #f7edcf;
+            /* Container background color */
+            border-radius: 20px;
+        }
+
+        .left-column,
+        .right-column {
+            flex: 1;
+            margin: 20px;
+        }
+
+        .right-column img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        .left-column .title h2 {
+            font-size: 24px;
+            color: #a35c7a;
+        }
+
+        .left-column .title p {
+            font-size: 18px;
+            color: #2b3a55;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: auto;
+            margin-bottom: 50px;
+        }
+
+        .chart-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="left-buttons">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/all-products"><i class="fas fa-box-open"></i> Products</a>
+            <a href="/explor"><i class="fas fa-compass"></i> Explore</a>
+            <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        <div class="right-buttons">
+            <form action="/search" method="get" class="search-bar">
+                <input type="text" name="product_name" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left-column">
+            <div class="title">
+                <h2>NIVEA</h2>
+                <p>Nivea products are among the leading global brands in the field of skincare and body care, offering a wide range of
+                products that cater to different skin types. Their product line includes moisturizers, cleansers, shower oils, sun
+                protection products, and deodorants. These products are known for their high quality and innovative ingredients that
+                enhance hydration and provide natural softness and radiance to the skin. Nivea also focuses on developing products
+                suitable for all ages and seasons, making it a trusted choice for consumers worldwide.</p>
+            </div>
+            <div class="chart-container">
+                <img id="locationChart" src="" alt="Location Chart">
+            </div>
+            <div class="chart-container">
+                <img id="genderChart" src="" alt="Gender Chart">
+            </div>
+            <div class="chart-container">
+                <img id="typeChart" src="" alt="Type Chart">
+            </div>
+            <div class="chart-container">
+                <img id="ageChart" src="" alt="Age Chart">
+            </div>
+        </div>
+        <div class="right-column">
+            <img src="images/nivea.webp" alt="NIVEA Product">
+        </div>
+    </div>
+    <script>
+        // جلب نتائج التحليل من الخادم وعرضها في الصفحة
+        fetch('/nivea-analysis')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('locationChart').src = `/images/${data.location}`;
+                document.getElementById('genderChart').src = `/images/${data.gender}`;
+                document.getElementById('typeChart').src = `/images/${data.type}`;
+                document.getElementById('ageChart').src = `/images/${data.age}`;
+            });
+    </script>
+</body>
+
+</html>

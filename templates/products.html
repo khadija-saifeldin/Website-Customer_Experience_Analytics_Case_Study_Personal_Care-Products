@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه لعرض المنتجات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: ltr;
+            margin: 0;
+            padding: 0;
+            background-color: #f7edcf; /* Background color */
+            color: #2b3a55; /* Text color */
+        }
+        header {
+            background-color: #f7edcf; /* Header background color */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f7edcf;
+        }
+        header .left-buttons, header .right-buttons {
+            display: flex;
+            align-items: center;
+        }
+        header .left-buttons a, header .right-buttons a {
+            margin: 0 10px;
+            padding: 10px;
+            text-decoration: none;
+            color: #2b3a55; /* Button text color */
+            border: 1px solid #f7edcf; /* Border color */
+            border-radius: 5px; /* Border radius */
+            background-color: #f7edcf; /* Button background color */
+            transition: background-color 0.3s ease;
+            font-size: 18px; /* Button font size */
+        }
+        header .left-buttons a:hover, header .right-buttons a:hover {
+            background-color: #212121;
+            color: #a35c7a;
+        }
+        .search-bar {
+            text-align: center;
+            margin: 3px 0;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 1px;
+            font-size: 25px; /* Search bar font size */
+            border: 1px solid #a35c7a; /* Search bar border color */
+            border-radius: 100px;
+            background-color: #f7edcf; /* Search bar background color */
+        }
+        .search-bar button {
+            padding: 10px;
+            font-size: 20px; /* Search button font size */
+            margin-right: 10px;
+            border: 1px solid #f7edcf;
+            border-radius: 50px;
+            background-color: #f7edcf; /* Search button background color */
+            color: #212121; /* Search button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #a35c7a;
+            color: #f7edcf;
+        }
+        .cardlist {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #f7edcf;
+            background-color: #f7edcf; /* Card list background color */
+            border-radius: 20px;
+        }
+        .card {
+            width: 30%;
+            margin-bottom: 20px;
+            border: 1px solid #f7edcf;
+            background-color: #f7edcf; /* Card background color */
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 20px; /* Space between images */
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .card_title a {
+            font-size: 24px; /* Card title font size */
+            color: #a35c7a; /* Card title color */
+            text-decoration: none;
+        }
+        .card_title p {
+            font-size: 18px; /* Card description font size */
+            color: #2b3a55; /* Card description color */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="left-buttons">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/all-products"><i class="fas fa-box-open"></i> Products</a>
+            <a href="/explor"><i class="fas fa-compass"></i> Explore</a>
+            <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        <div class="right-buttons">
+            <form action="/search" method="get" class="search-bar">
+                <input type="text" name="product_name" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+    <div class="cardlist">
+        <div class="card">
+            <div class="card_image">
+                <img src="images/Dove.webp">
+            </div>
+            <div class="card_title">
+                <a href="/Dove">Dove</a>
+                <p> it nourishes and rejuvenates the skin,it lasts for up to 48 hours,it is enriched with Sirah serum,the specific hand of moisturzing care.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="images/had & sh.jpg">
+            </div>
+            <div class="card_title">
+                <a href="#">Head Shoulders</a>
+                <p>Anti-dandruff for smooth and silky hair,it enhances scalp health and significantly imporoves the appearance of Hair.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="images/nivea.webp">
+            </div>
+            <div class="card_title">
+                <a href="/nivea">NIVEA</a>
+                <p>Nivea products are among the leading global brands in the field of skincare and body care, offering a wide range of
+                products that cater to different skin types. Their product line includes moisturizers, cleansers, shower oils, sun
+                protection products, and deodorants. These products are known for their high quality and innovative ingredients that
+                enhance hydration and provide natural softness and radiance to the skin. Nivea also focuses on developing products
+                suitable for all ages and seasons, making it a trusted choice for consumers worldwide.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="images/vaseline.jpg">
+            </div>
+            <div class="card_title">
+                <a href="#">Vaseline</a>
+                <p>it is aproduct designed to provide moisture and soothe dry skin thanks to its natural ingredients.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="images/La Rue Verte.jpg">
+            </div>
+            <div class="card_title">
+                <a href="#">La Rue Verte</a>
+                <p>it absorbs excess oils and balances the secretion of fats,ensuring fresh and shine-fresh and shine-free skin.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="images/Long & Luxe.webp">
+            </div>
+            <div class="card_title">
+                <a href="#">Long & Luxe</a>
+                <p>Luxe is adeep cleansing Sampoo that is part of our Legacy Cell Therapy system.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="images/html.qq.webp">
+            </div>
+            <div class="card_title">
+                <a href="#">Dove</a>
+                <p>Dove Shampoo gently cleanses the Scalp and hair,focusing on removing dirt and impurities Without drying the hair.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img src="images/html.zz.webp">
+            </div>
+            <div class="card_title">
+                <a href="#">PaPaya</a>
+                <p>it Works to imporove the freshness of the skin,thanks to its active ingredients,the Lotion can enhance the skins radiance and give it aradiant,youthful appearance.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

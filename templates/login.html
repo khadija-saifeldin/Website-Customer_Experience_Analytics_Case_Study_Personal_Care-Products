@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Sign Up</title>
+    <!-- تضمين مكتبة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .overlay h2 {
+            margin-bottom: 20px;
+        }
+        .overlay input, .overlay select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .overlay button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .overlay button:hover {
+            background-color: #218838;
+        }
+        .toggle-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            cursor: pointer;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="login-container">
+        <h2>Login</h2>
+        <input type="email" id="login-email" placeholder="Email">
+        <input type="password" id="login-password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <span class="toggle-link" onclick="toggleForm()">Don't have an account? Sign Up</span>
+    </div>
+    <div class="overlay" id="signup-container" style="display: none;">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-username" placeholder="Username">
+        <input type="email" id="signup-email" placeholder="Email">
+        <input type="password" id="signup-password" placeholder="Password">
+        <input type="number" id="signup-age" placeholder="Age">
+        <select id="signup-gender">
+            <option value="">Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <input type="text" id="signup-birthplace" placeholder="Place of Birth">
+        <select id="signup-social-status">
+            <option value="">Social Status</option>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+            <option value="widowed">Widowed</option>
+        </select>
+        <input type="text" id="signup-location" placeholder="Location">
+        <button onclick="signup()">Sign Up</button>
+        <span class="toggle-link" onclick="toggleForm()">Already have an account? Login</span>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const loginContainer = document.getElementById('login-container');
+            const signupContainer = document.getElementById('signup-container');
+            if (loginContainer.style.display === 'none') {
+                loginContainer.style.display = 'block';
+                signupContainer.style.display = 'none';
+            } else {
+                loginContainer.style.display = 'none';
+                signupContainer.style.display = 'block';
+            }
+        }
+
+        async function login() {
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if (response.ok) {
+                    window.location.href = '/';
+                } else {
+                    alert('Invalid email or password');
+                }
+        }
+
+       async function signup() {
+            const username = document.getElementById('signup-username').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const age = document.getElementById('signup-age').value;
+            const gender = document.getElementById('signup-gender').value;
+            const birthplace = document.getElementById('signup-birthplace').value;
+            const socialStatus = document.getElementById('signup-social-status').value;
+            const location = document.getElementById('signup-location').value;
+
+            const response = await fetch('/users/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, email, password, age, gender, socialstatus: socialStatus, location })
+            });
+
+            if (response.ok) {
+                window.location.href = '/';
+            } else {
+                alert('Error signing up');
+            }
+        }
+    </script>
+</body>
+</html>

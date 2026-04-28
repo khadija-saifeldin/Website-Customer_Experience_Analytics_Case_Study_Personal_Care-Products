@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: ltr;
+            margin: 0;
+            padding: 0;
+            background-color: #f7edcf; /* Background color */
+            color: #2b3a55; /* Text color */
+        }
+        header {
+            background-color: #f7edcf; /* Header background color */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f7edcf;
+        }
+        header .left-buttons, header .right-buttons {
+            display: flex;
+            align-items: center;
+        }
+        header .left-buttons a, header .right-buttons a {
+            margin: 0 10px;
+            padding: 10px;
+            text-decoration: none;
+            color: #2b3a55; /* Button text color */
+            border: 1px solid #f7edcf; /* Border color */
+            border-radius: 5px; /* Border radius */
+            background-color: #f7edcf; /* Button background color */
+            transition: background-color 0.3s ease;
+            font-size: 18px; /* Button font size */
+        }
+        header .left-buttons a:hover, header .right-buttons a:hover {
+            background-color: #212121;
+            color: #a35c7a;
+        }
+        .search-bar {
+            text-align: center;
+            margin: 3px 0;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 1px;
+            font-size: 25px; /* Search bar font size */
+            border: 1px solid #a35c7a; /* Search bar border color */
+            border-radius: 100px;
+            background-color: #f7edcf;
+        }
+        .search-bar button {
+            padding: 10px;
+            font-size: 20px; /* Search button font size */
+            margin-right: 10px;
+            border: 1px solid #f7edcf;
+            border-radius: 50px;
+            background-color: #f7edcf; /* Search button background color */
+            color: #212121; /* Search button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #a35c7a;
+            color: #f7edcf;
+        }
+        .cardlist {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #f7edcf;
+            background-color: #f7edcf;
+            border-radius: 20px;
+        }
+        .card {
+            width: 30%;
+            margin-bottom: 20px;
+            border: 1px solid #f7edcf;
+            background-color: #f7edcf;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .card img {
+            width: 100%;
+            height: 190px; /* تحديد ارتفاع ثابت للصورة */
+            border-radius: 20px;
+            margin-bottom: 20px;
+            object-fit: cover; /* لضمان أن الصورة تغطي كامل المساحة المحددة */
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .card_title a {
+            font-size: 24px;
+            color: #a35c7a;
+            text-decoration: none;
+        }
+        .card_title p {
+            font-size: 18px;
+            color: #2b3a55;
+        }
+        .card.expanded {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            height: 90%;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        .card.expanded img {
+            width: 100%; /* تعديل العرض ليكون 100% */
+            height: 100%; /* تعديل الارتفاع ليكون 100% */
+            object-fit: contain; /* لضمان أن الصورة تتناسب مع حجم البطاقة */
+        }
+        .card.expanded .card_title {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <div class="left-buttons">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/all-products"><i class="fas fa-box-open"></i> Products</a>
+            <a href="/explor"><i class="fas fa-compass"></i> Explore</a>
+            <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        <div class="right-buttons">
+            <form action="/search" method="get" class="search-bar">
+                <input type="text" name="product_name" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+    <div class="cardlist">
+        <div class="card">
+            <div class="card_image">
+                <img id="sudanChart" src="" alt="Sudan Chart">
+            </div>
+            <div class="card_title">
+                <a href="#">Sudan Analysis</a>
+                <p>Analysis of products based on location in Sudan.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img id="egyptChart" src="" alt="Egypt Chart">
+            </div>
+            <div class="card_title">
+                <a href="#">Egypt Analysis</a>
+                <p>Analysis of products based on location in Egypt.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img id="uaeChart" src="" alt="UAE Chart">
+            </div>
+            <div class="card_title">
+                <a href="#">UAE Analysis</a>
+                <p>Analysis of products based on location in UAE.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img id="qatarChart" src="" alt="Qatar Chart">
+            </div>
+            <div class="card_title">
+                <a href="#">Qatar Analysis</a>
+                <p>Analysis of products based on location in Qatar.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img id="saudiArabiaChart" src="" alt="Saudi Arabia Chart">
+            </div>
+            <div class="card_title">
+                <a href="#">Saudi Arabia Analysis</a>
+                <p>Analysis of products based on location in Saudi Arabia.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img id="femaleChart" src="" alt="Female Chart">
+            </div>
+            <div class="card_title">
+                <a href="#"><i class="female"></i>Female Analysis</a>
+                <p>Analysis of products based on gender (Female).</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card_image">
+                <img id="maleChart" src="" alt="Male Chart">
+            </div>
+            <div class="card_title">
+                <a href="#"><i class="male"></i>Male Analysis</a>
+                <p>Analysis of products based on gender (Male).</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // جلب نتائج التحليل من الخادم وعرضها في الصفحة
+        fetch('/explor-analysis')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('sudanChart').src = `/images/${data.sudan}`;
+                document.getElementById('egyptChart').src = `/images/${data.egypt}`;
+                document.getElementById('uaeChart').src = `/images/${data.uae}`;
+                document.getElementById('qatarChart').src = `/images/${data.qatar}`;
+                document.getElementById('saudiArabiaChart').src = `/images/${data.Saudi_Arabia}`;
+                document.getElementById('femaleChart').src = `/images/${data.female}`;
+                document.getElementById('maleChart').src = `/images/${data.male}`;
+            });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                card.addEventListener('click', function () {
+                    if (card.classList.contains('expanded')) {
+                        card.classList.remove('expanded');
+                    } else {
+                        cards.forEach(c => c.classList.remove('expanded'));
+                        card.classList.add('expanded');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
